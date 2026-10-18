@@ -13,7 +13,7 @@
       "props": {
         "id": "Banner-e8eab3b8-f47a-4702-a959-c3262d31d9b8",
         "eyebrow": "Your Practitioner",
-        "heading": "About Mark",
+        "heading": "About Me",
         "subtitle": "Healing with heart, insight, and 27+ years of experience.",
         "colour": "green"
       }
@@ -124,5 +124,6 @@
         }
       }
     }
-  ]
+  ],
+  "zones": {}
 }
