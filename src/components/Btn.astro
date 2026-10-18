@@ -1,0 +1,17 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  button?: { label?: string; link?: string };
+  class: string;
+  icon?: string;
+}
+const { button, class: className, icon } = Astro.props;
+const external = button?.link?.startsWith('http');
+---
+{button?.label && button?.link && (
+  <a class={className} href={button.link} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+    {icon && <Icon name={icon} size={18} />}
+    {button.label}
+  </a>
+)}

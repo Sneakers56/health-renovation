@@ -1,0 +1,9 @@
+{
+  "items": [
+    { "label": "Home", "link": "/" },
+    { "label": "About", "link": "/about/" },
+    { "label": "Services", "link": "/services/", "servicesDropdown": true, "children": [] },
+    { "label": "Contact", "link": "/contact/" }
+  ],
+  "button": { "label": "Book a Session", "link": "/contact/" }
+}

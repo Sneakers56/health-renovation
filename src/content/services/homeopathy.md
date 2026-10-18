@@ -1,0 +1,22 @@
+---
+title: Homeopathy
+order: 2
+color: teal
+icon: homeopathy
+image: ../../assets/images/homeopathy.jpg
+duration: 45–60 min
+tagline: Natural, gentle remedies selected to support your body and emotions.
+excerpt: Natural, gentle remedies selected to support your body and emotions. Works at a deep level to stimulate the body's own healing capacity.
+benefits:
+  - Safe for all ages
+  - Addresses chronic conditions
+  - Supports emotional balance
+  - No known side effects
+  - Works alongside other treatments
+---
+
+Homeopathy is a system of natural medicine developed over 200 years ago that uses highly diluted substances to stimulate the body's own healing response. It is based on the principle of "like cures like" – a substance that causes symptoms in a healthy person can, in very small doses, treat similar symptoms in a sick person.
+
+Mark uses classical homeopathic principles combined with modern clinical experience to select the most appropriate remedy for your individual presentation. Remedies are safe, gentle, and non-toxic – suitable for all ages including infants and the elderly.
+
+Homeopathy is particularly effective for chronic conditions, emotional imbalances, allergies, and where conventional medicine has not provided lasting relief.

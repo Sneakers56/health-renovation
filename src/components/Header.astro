@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Icon from './Icon.astro';
+import Btn from './Btn.astro';
+import logo from '../assets/images/logo.png';
+import site from '../data/site.json';
+import nav from '../data/navigation.json';
+
+type Link = { label: string; link: string };
+type Item = Link & { servicesDropdown?: boolean; children?: Link[] };
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const path = Astro.url.pathname;
+const tel = site.phone.replace(/\s/g, '');
+const isCurrent = (href: string) => (href === '/' ? path === '/' : href.startsWith('/') && path.startsWith(href));
+
+const items = (nav.items as Item[]).map((item) => {
+  const children: Link[] = [
+    ...(item.servicesDropdown ? services.map((s) => ({ label: s.data.title, link: `/services/${s.id}/` })) : []),
+    ...(item.children ?? []),
+  ];
+  return { ...item, children };
+});
+const external = (href: string) => (href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {});
+---
+<header class="site-header" id="site-header">
+  <div class="header-top-bar">
+    <div class="container">
+      <span class="header-top-text">{site.suburb}, Victoria &nbsp;|&nbsp; {site.hours}</span>
+      <a class="header-phone" href={`tel:${tel}`}>
+        <Icon name="phone" size={16} />
+        Call {site.phone}
+      </a>
+    </div>
+  </div>
+
+  <div class="header-main">
+    <div class="container header-inner">
+      <div class="site-branding">
+        <a class="site-logo" href="/" rel="home">
+          <Image src={logo} alt={site.name} class="custom-logo" height={90} loading="eager" fetchpriority="high" />
+        </a>
+      </div>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-menu">
+          {items.map((item) => (
+            <li class:list={{ 'menu-item-has-children': item.children.length > 0 }}>
+              <a href={item.link} aria-current={isCurrent(item.link) ? 'page' : undefined} {...external(item.link)}>{item.label}</a>
+              {item.children.length > 0 && (
+                <ul class="sub-menu">
+                  {item.children.map((c) => <li><a href={c.link} {...external(c.link)}>{c.label}</a></li>)}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+        <Btn button={nav.button} class="btn btn-primary nav-cta" />
+      </nav>
+
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <span class="hamburger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>

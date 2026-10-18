@@ -1,0 +1,128 @@
+{
+  "root": {
+    "props": {
+      "title": "About Mark",
+      "seoTitle": "",
+      "seoDescription": "Meet Mark – founder of Health Renovation and wholistic practitioner with 27+ years of experience in Kinesiology, Homeopathy, Massage, Reiki, Life Coaching and MRT-Detox.",
+      "noindex": false
+    }
+  },
+  "content": [
+    {
+      "type": "Banner",
+      "props": {
+        "id": "Banner-e8eab3b8-f47a-4702-a959-c3262d31d9b8",
+        "eyebrow": "Your Practitioner",
+        "heading": "About Mark",
+        "subtitle": "Healing with heart, insight, and 27+ years of experience.",
+        "colour": "green"
+      }
+    },
+    {
+      "type": "ImageText",
+      "props": {
+        "id": "ImageText-a7daf411-4f3f-417a-8da9-95c719757d5d",
+        "eyebrow": "Founder & Lead Practitioner",
+        "heading": "Hi, I'm Mark",
+        "body": "<p>I&#39;ve been practicing wholistic health for over 27 years, and I still find this work profoundly meaningful. Every client who walks through the door brings a unique story – a complex interplay of physical symptoms, emotional patterns, life history, and unmet needs.</p>\n<p>My approach is simple: I listen. I listen to your words, your body, and the deeper signals that emerge through techniques like kinesiology and muscle testing. From there, I work with you – not on you – to find a path that supports real, lasting change.</p>\n<p>Over the years, I&#39;ve trained extensively in Kinesiology, Homeopathy, Massage Therapy, Reiki, Life Coaching, and Matrix Regeneration Therapy (MRT-Detox). Each modality adds a different dimension to the care I can offer – and together, they allow me to meet clients wherever they&#39;re at.</p>\n<p>Whether you&#39;re managing chronic pain, exhausted by stress, navigating an emotional challenge, or simply feeling like you&#39;ve lost yourself somewhere along the way – I&#39;m here to help you find your way back.</p>\n",
+        "image": "mark.jpg",
+        "imageAlt": "Mark – Health Renovation practitioner",
+        "style": "light",
+        "quote": "\"Your health is not a luxury. It's the foundation of everything you want to do and be. Put yourself first.\"",
+        "button1": {
+          "label": "Book a Session with Mark",
+          "link": "/contact/"
+        },
+        "button2": {
+          "label": "Call 0412 567 614",
+          "link": "tel:0412567614"
+        },
+        "badgeNumber": "27+",
+        "badgeLabel": "Years Experience"
+      }
+    },
+    {
+      "type": "Cards",
+      "props": {
+        "id": "Cards-7a2d7b35-6c5a-431f-b4be-f34935e533bc",
+        "eyebrow": "How I Work",
+        "heading": "My Philosophy",
+        "layout": "compact",
+        "background": "light",
+        "items": [
+          {
+            "icon": "whole",
+            "title": "Whole Person",
+            "desc": "I treat the whole person, not isolated symptoms. Physical, emotional, and energetic dimensions are all considered."
+          },
+          {
+            "icon": "personalised",
+            "title": "Personalised",
+            "desc": "No two clients are alike. Every treatment plan is uniquely tailored to your specific needs, history, and goals."
+          },
+          {
+            "icon": "gentle",
+            "title": "Gentle & Safe",
+            "desc": "All therapies are gentle, non-invasive, and safe – designed to work with your body, not against it."
+          },
+          {
+            "icon": "informed",
+            "title": "Informed",
+            "desc": "I explain clearly what I'm doing and why. You are always in control, fully informed, and able to ask questions."
+          }
+        ]
+      }
+    },
+    {
+      "type": "Tags",
+      "props": {
+        "id": "Tags-49dc6741-3c9c-4e42-a169-f0df8545a1b5",
+        "eyebrow": "Training & Expertise",
+        "heading": "Therapies I'm Trained In",
+        "items": [
+          {
+            "label": "Kinesiology"
+          },
+          {
+            "label": "Homeopathy"
+          },
+          {
+            "label": "Massage Therapy"
+          },
+          {
+            "label": "Reiki"
+          },
+          {
+            "label": "Life Coaching"
+          },
+          {
+            "label": "MRT-Detox (Matrix Regeneration Therapy)"
+          },
+          {
+            "label": "Mobile Healing (in-home sessions)"
+          }
+        ],
+        "button": {
+          "label": "Explore All Services",
+          "link": "/services/"
+        }
+      }
+    },
+    {
+      "type": "Cta",
+      "props": {
+        "id": "Cta-00e0c36d-0b41-40bd-baf6-b0681cca35fc",
+        "heading": "Ready to Take the First Step?",
+        "subtitle": "Call or text Mark for a free discovery conversation.",
+        "button1": {
+          "label": "Call 0412 567 614",
+          "link": "tel:0412567614"
+        },
+        "button2": {
+          "label": "Send a Text",
+          "link": "sms:0412567614"
+        }
+      }
+    }
+  ]
+}

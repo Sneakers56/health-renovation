@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+<Base title="Message Sent" description="Thanks for getting in touch with Health Renovation." noindex>
+  <section class="page-hero page-hero--amber">
+    <div class="container">
+      <div class="page-hero-content">
+        <h1 class="page-title light">Thank you!</h1>
+        <p class="page-hero-subtitle">Your message has been sent. {site.practitioner} will be in touch soon.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section-pad">
+    <div class="container narrow-container text-center">
+      <p class="section-lead">Need to talk sooner? Call or text <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>.</p>
+      <a class="btn btn-primary" href="/">Back to Home</a>
+    </div>
+  </section>
+</Base>

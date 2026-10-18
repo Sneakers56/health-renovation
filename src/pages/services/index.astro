@@ -1,0 +1,69 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { breadcrumbSchema } from '../../lib/schema';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const rendered = await Promise.all(services.map(async (s) => ({ s, Content: (await render(s)).Content })));
+const schema = [
+  breadcrumbSchema([
+    { name: 'Home', url: 'https://healthrenovation.com.au/' },
+    { name: 'Services', url: 'https://healthrenovation.com.au/services/' },
+  ]),
+];
+---
+<Base
+  title="Our Therapies"
+  description="Natural therapies at Health Renovation in Hawthorn, Victoria: Kinesiology, Homeopathy, Massage Therapy, MRT-Detox, Life Coaching and Reiki."
+  schema={schema}
+>
+  <section class="page-hero page-hero--teal" aria-labelledby="services-page-title">
+    <div class="container">
+      <div class="page-hero-content">
+        <span class="section-eyebrow light">What We Offer</span>
+        <h1 id="services-page-title" class="page-title light">Our Therapies</h1>
+        <p class="page-hero-subtitle">A rich blend of gentle, natural modalities – each tailored to meet you where you are.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-detail section-pad">
+    <div class="container">
+      {rendered.map(({ s, Content }, i) => (
+        <>
+          <div class={`service-detail-item ${i % 2 ? 'reverse' : ''}`} id={s.id}>
+            <div class="service-detail-icon-col">
+              <div class={`service-detail-icon-wrap service-icon-${s.data.color}`}>
+                <Icon name={s.data.icon} size={48} />
+              </div>
+              <div class="service-meta-card">
+                <div class="service-meta-item">
+                  <span class="meta-label">Session Length</span>
+                  <span class="meta-value">{s.data.duration}</span>
+                </div>
+                <div class="service-meta-item">
+                  <span class="meta-label">Format</span>
+                  <span class="meta-value">In-clinic + Mobile</span>
+                </div>
+                <a class="btn btn-primary btn-block" href="/contact/">Book This Service</a>
+              </div>
+            </div>
+            <div class="service-detail-content">
+              <h2 class="service-detail-title"><a href={`/services/${s.id}/`}>{s.data.title}</a></h2>
+              <p class="service-detail-tagline">{s.data.tagline}</p>
+              <div class="service-detail-body"><Content /></div>
+              <div class="service-benefits">
+                <h3 class="benefits-title">Key Benefits</h3>
+                <ul class="benefits-list">
+                  {s.data.benefits.map((b) => <li><Icon name="check" size={16} /> {b}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {i < rendered.length - 1 && <hr class="service-divider" />}
+        </>
+      ))}
+    </div>
+  </section>
+</Base>

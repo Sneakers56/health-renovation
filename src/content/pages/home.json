@@ -1,0 +1,189 @@
+{
+  "root": {
+    "props": {
+      "title": "Home",
+      "seoTitle": "Health Renovation – Wholistic Health in Hawthorn, Victoria",
+      "seoDescription": "Wholistic health in Hawthorn, Victoria. Kinesiology, Homeopathy, Massage Therapy, Reiki, Life Coaching & MRT-Detox with 27+ years of experience. Call 0412 567 614.",
+      "noindex": false
+    }
+  },
+  "content": [
+    {
+      "type": "Hero",
+      "props": {
+        "id": "Hero-75a66c79-fb70-40e5-ad8f-a86c7f3a7b1c",
+        "eyebrow": "Expert Wholistic Care",
+        "heading": "Feel Better, Naturally",
+        "subheading": "Gentle therapies for real-life stress, pain, and emotional imbalance – delivered with care and professional expertise.",
+        "image": "mark.jpg",
+        "imageAlt": "Mark, founder of Health Renovation",
+        "button1": {
+          "label": "Explore Services",
+          "link": "/services/"
+        },
+        "button2": {
+          "label": "Text for a Free Discovery Call",
+          "link": "sms:0412567614"
+        }
+      }
+    },
+    {
+      "type": "TrustBar",
+      "props": {
+        "id": "TrustBar-22131183-bc23-4280-ae2a-c50c63502e37",
+        "items": [
+          {
+            "icon": "shield",
+            "text": "27+ Years Experience"
+          },
+          {
+            "icon": "check",
+            "text": "6 Wholistic Therapies"
+          },
+          {
+            "icon": "pin",
+            "text": "Hawthorn, Victoria"
+          },
+          {
+            "icon": "clock",
+            "text": "Mon–Sat by appointment"
+          }
+        ]
+      }
+    },
+    {
+      "type": "TextSection",
+      "props": {
+        "id": "TextSection-a53db385-184e-4f52-9bda-3be290b477f3",
+        "eyebrow": "Renovating Yourself Starts Here",
+        "heading": "Wholistic Wellness Tailored to Your Needs",
+        "body": "<p>Mark brings deep clinical expertise and intuitive skill across a rich blend of gentle, natural therapies. Whether you&#39;re dealing with chronic pain, stress, emotional imbalance, or simply want to feel more alive – there&#39;s a path forward here.</p>\n",
+        "align": "center",
+        "background": "white"
+      }
+    },
+    {
+      "type": "Cards",
+      "props": {
+        "id": "Cards-b64c61e0-a851-4416-8d79-601cba881d8f",
+        "eyebrow": "How Can We Help?",
+        "heading": "Common Concerns We Address",
+        "layout": "grid",
+        "background": "light",
+        "items": [
+          {
+            "icon": "pain",
+            "title": "Acute & Chronic Pain",
+            "desc": "Muscle tension, joint pain, headaches and persistent discomfort addressed at their root cause."
+          },
+          {
+            "icon": "digestive",
+            "title": "Digestive Complaints",
+            "desc": "Bloating, IBS, sluggish digestion and gut imbalance supported naturally without harsh interventions."
+          },
+          {
+            "icon": "lymphatic",
+            "title": "Lymphatic Detox & Weight",
+            "desc": "MRT therapy to promote lymphatic drainage, reduce cellulite and support healthy weight management."
+          },
+          {
+            "icon": "energy",
+            "title": "Energy & Fatigue",
+            "desc": "Rebalance your energy systems to overcome tiredness, adrenal fatigue, and low motivation."
+          },
+          {
+            "icon": "wellbeing",
+            "title": "General Wellbeing",
+            "desc": "Feel more like yourself – grounded, healthy, and able to enjoy everyday life fully."
+          },
+          {
+            "icon": "stress",
+            "title": "Stress & Mood",
+            "desc": "Anxiety, overwhelm, depressive tendencies, and emotional imbalance gently addressed through kinesiology and coaching."
+          }
+        ]
+      }
+    },
+    {
+      "type": "ServicesGrid",
+      "props": {
+        "id": "ServicesGrid-11c966fc-34e2-4e35-a2b5-6c4418d44108",
+        "eyebrow": "What We Offer",
+        "heading": "Our Therapies",
+        "subtitle": "A rich blend of gentle, natural modalities – each tailored to meet you where you are.",
+        "button": {
+          "label": "View All Services",
+          "link": "/services/"
+        }
+      }
+    },
+    {
+      "type": "ImageText",
+      "props": {
+        "id": "ImageText-df7aecd0-99bc-49c6-868c-d998b618050e",
+        "eyebrow": "Meet Your Practitioner",
+        "heading": "Healing with Heart, Insight, and Authentic Expertise",
+        "body": "<p>Mark is the founder of Health Renovation and a deeply experienced wholistic practitioner. With a rare combination of clinical knowledge, intuitive insight, and genuine care, he creates personalised treatment plans for every client.</p>\n<p>His approach is centred on treating the whole person – not just isolated symptoms – integrating Kinesiology, Homeopathy, Massage, Reiki, Life Coaching, and MRT-Detox into personalised treatment plans.</p>\n",
+        "image": "mark.jpg",
+        "imageAlt": "Mark – Health Renovation practitioner",
+        "style": "dark",
+        "quote": "\"Put yourself first – your health is the foundation of everything.\"",
+        "button1": {
+          "label": "Read Mark's Story",
+          "link": "/about/"
+        }
+      }
+    },
+    {
+      "type": "Faq",
+      "props": {
+        "id": "Faq-e346daf7-e7c2-47ba-9228-22ffdbf3bb30",
+        "eyebrow": "Common Questions",
+        "heading": "Frequently Asked Questions",
+        "items": [
+          {
+            "q": "How often do I need to come for treatments?",
+            "a": "Treatment frequency depends on your individual needs and health goals. For acute conditions, weekly sessions are often recommended initially. For general wellbeing and maintenance, fortnightly or monthly visits work well. Mark will advise a personalised schedule after your first session."
+          },
+          {
+            "q": "What is muscle testing and how does it work in Kinesiology?",
+            "a": "Muscle testing (or applied kinesiology) uses gentle resistance applied to a muscle – usually an arm or leg – to assess the body's response to various stimuli. The muscle response gives Mark information about which body systems are stressed or imbalanced, allowing him to identify the most effective treatments. It's non-invasive, safe, and surprisingly accurate."
+          },
+          {
+            "q": "Can you help with anxiety and sleep issues?",
+            "a": "Absolutely. Stress, anxiety, and poor sleep are among the most common presentations. Kinesiology, Reiki, and Homeopathy in particular are very effective for calming the nervous system, reducing cortisol, and restoring healthy sleep patterns. Many clients notice significant improvement within a few sessions."
+          },
+          {
+            "q": "Do I need a referral from my doctor?",
+            "a": "No referral is needed. You can book directly with Mark by calling or texting 0412 567 614. That said, these therapies work best as a complement to your existing medical care, not a replacement. Mark encourages open communication with your GP."
+          },
+          {
+            "q": "Is there parking available at the Hawthorn clinic?",
+            "a": "Yes, street parking is available nearby. Mark will provide specific directions and parking details when you book your appointment."
+          },
+          {
+            "q": "What should I wear or bring to my first session?",
+            "a": "Wear comfortable, loose-fitting clothing. For Kinesiology and Massage, you may need to remove shoes or outer layers. Bring any relevant medical history, current medications, or notes about your health concerns. Most importantly, bring an open mind!"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Cta",
+      "props": {
+        "id": "Cta-603f5e04-d513-4c17-a697-7f41cda29e6a",
+        "heading": "Ready to Start Your Renovation?",
+        "subtitle": "Call or text Mark for a free discovery conversation. Mon–Sat, Hawthorn Victoria.",
+        "button1": {
+          "label": "Call 0412 567 614",
+          "link": "tel:0412567614"
+        },
+        "button2": {
+          "label": "Send a Message",
+          "link": "/contact/"
+        },
+        "note": "call for an appointment →  0412 567 614"
+      }
+    }
+  ]
+}

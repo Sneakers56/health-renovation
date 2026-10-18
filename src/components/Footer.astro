@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Icon from './Icon.astro';
+import logo from '../assets/images/logo.png';
+import site from '../data/site.json';
+import nav from '../data/navigation.json';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const tel = site.phone.replace(/\s/g, '');
+const social = site.social as { network: string; url: string }[];
+---
+<footer class="site-footer">
+  <div class="footer-cta-strip">
+    <div class="container">
+      <div class="footer-cta-content">
+        <h2 class="footer-cta-heading">Ready to Feel Better, Naturally?</h2>
+        <p>Take the first step. Call or text {site.practitioner} for a free discovery conversation.</p>
+        <div class="footer-cta-actions">
+          <a class="btn btn-white" href={`tel:${tel}`}><Icon name="phone" size={18} /> Call {site.phone}</a>
+          <a class="btn btn-outline-white" href={`sms:${tel}`}>Text for a Discovery Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a class="footer-logo" href="/">
+            <Image src={logo} alt={site.name} class="custom-logo" height={70} />
+          </a>
+          <p class="footer-tagline">{site.tagline}</p>
+          {social.length > 0 && (
+            <div class="footer-social">
+              {social.map((s) => (
+                <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.network}>
+                  <Icon name={s.network.toLowerCase()} size={20} />
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div class="footer-col footer-links">
+          <h2 class="footer-col-title">Quick Links</h2>
+          <ul>
+            {nav.items.map((item) => <li><a href={item.link}>{item.label}</a></li>)}
+          </ul>
+        </div>
+
+        <div class="footer-col footer-services">
+          <h2 class="footer-col-title">Services</h2>
+          <ul>
+            {services.map((s) => <li><a href={`/services/${s.id}/`}>{s.data.title}</a></li>)}
+          </ul>
+        </div>
+
+        <div class="footer-col footer-contact">
+          <h2 class="footer-col-title">Contact</h2>
+          <address>
+            <div class="footer-contact-item"><Icon name="pin" size={16} /><span>{site.suburb}, Victoria</span></div>
+            <div class="footer-contact-item"><Icon name="phone" size={16} /><a href={`tel:${tel}`}>{site.phone}</a></div>
+            <div class="footer-contact-item"><Icon name="mail" size={16} /><a href={`mailto:${site.email}`}>{site.email}</a></div>
+            <div class="footer-contact-item"><Icon name="clock" size={16} /><span>{site.hours}</span></div>
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p class="copyright">&copy; {new Date().getFullYear()} <a href="/">{site.name}</a>. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

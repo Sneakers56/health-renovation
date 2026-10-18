@@ -1,0 +1,32 @@
+{
+  "root": {
+    "props": {
+      "title": "Book Online",
+      "seoTitle": "",
+      "seoDescription": "Book an appointment with Mark at Health Renovation in Hawthorn, Victoria.",
+      "noindex": false
+    }
+  },
+  "content": [
+    {
+      "type": "Banner",
+      "props": {
+        "id": "Banner-d6ff7f3c-b4d9-474c-95ce-5421effc98d5",
+        "eyebrow": "Appointments",
+        "heading": "Book Online",
+        "subtitle": "Choose a time that suits you.",
+        "colour": "teal"
+      }
+    },
+    {
+      "type": "Booking",
+      "props": {
+        "id": "Booking-c914a89c-2ec3-4817-bc8e-53772ed59037",
+        "heading": "Choose your appointment",
+        "intro": "Select a service and time below. Prefer to talk first? Call or text 0412 567 614.",
+        "url": "",
+        "height": 900
+      }
+    }
+  ]
+}

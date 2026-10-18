@@ -1,0 +1,78 @@
+---
+import '../styles/main.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import site from '../data/site.json';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  schema?: object[];
+  noindex?: boolean;
+}
+
+const { title, description, image = '/og-cover.jpg', type = 'website', schema = [], noindex = false } = Astro.props;
+const fullTitle = Astro.url.pathname === '/' ? title : `${title} | ${site.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image, Astro.site).href;
+const gaId = /^G-[A-Z0-9]+$/.test(site.googleAnalyticsId) ? site.googleAnalyticsId : '';
+const { announcement } = site;
+---
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="alternate" type="application/rss+xml" title={`${site.name} – Articles`} href="/rss.xml" />
+  <meta name="theme-color" content="#1f6b92" />
+
+  <meta property="og:site_name" content={site.name} />
+  <meta property="og:locale" content="en_AU" />
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" />
+
+  {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+
+  {gaId && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+      <script is:inline define:vars={{ gaId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+    </>
+  )}
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  {announcement?.enabled && announcement.text && (
+    <div class="announcement-bar">
+      {announcement.link ? <a href={announcement.link}>{announcement.text}</a> : <span>{announcement.text}</span>}
+    </div>
+  )}
+  <Header />
+  <main id="main-content" class="site-main">
+    <slot />
+  </main>
+  <Footer />
+  <script src="../scripts/main.ts"></script>
+</body>
+</html>

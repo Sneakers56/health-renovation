@@ -1,0 +1,19 @@
+{
+  "name": "Health Renovation",
+  "practitioner": "Mark",
+  "tagline": "Wholistic wellness tailored to your needs. Renovating yourself starts here.",
+  "phone": "0412 567 614",
+  "email": "mark@healthrenovation.com.au",
+  "suburb": "Hawthorn",
+  "state": "VIC",
+  "postcode": "3122",
+  "locationNote": "Exact address provided on booking",
+  "hours": "Mon–Sat by appointment",
+  "social": [],
+  "announcement": {
+    "enabled": false,
+    "text": "",
+    "link": ""
+  },
+  "googleAnalyticsId": ""
+}

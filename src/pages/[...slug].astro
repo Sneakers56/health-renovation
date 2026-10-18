@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageRender from '../puck/PageRender';
+import { buildSiteMeta } from '../lib/siteMeta';
+import { businessSchema, personSchema, faqSchema, breadcrumbSchema } from '../lib/schema';
+
+export async function getStaticPaths() {
+  const RESERVED = new Set(['services', 'blog', 'thanks', 'admin', 'editor', '404', 'rss.xml']);
+  const pages = await getCollection('pages');
+  return pages
+    .filter((page) => !RESERVED.has(page.id))
+    .map((page) => ({ params: { slug: page.id === 'home' ? undefined : page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const data = page.data;
+const { title, seoTitle, seoDescription, noindex } = data.root.props;
+const isHome = page.id === 'home';
+const url = `https://healthrenovation.com.au/${isHome ? '' : page.id + '/'}`;
+const metadata = await buildSiteMeta({ pageData: data });
+
+type Block = { type: string; props: Record<string, any> };
+function allBlocks(blocks: Block[]): Block[] {
+  return blocks.flatMap((b) => {
+    if (b.props?.hidden) return [];
+    const nested = Object.values(b.props ?? {}).filter((v) => Array.isArray(v) && v.every((i: any) => i && typeof i === 'object' && 'type' in i && 'props' in i));
+    return [b, ...nested.flatMap((n) => allBlocks(n as Block[]))];
+  });
+}
+const blocks = allBlocks(data.content as Block[]);
+
+const schema: object[] = [];
+if (isHome) schema.push(businessSchema(metadata.services.map((s) => s.title)));
+if (page.id === 'about') schema.push(personSchema(metadata.services.map((s) => s.title)));
+const faqItems = blocks.filter((b) => b.type === 'Faq').flatMap((b) => b.props.items ?? []);
+if (faqItems.length) schema.push(faqSchema(faqItems));
+if (!isHome) schema.push(breadcrumbSchema([{ name: 'Home', url: 'https://healthrenovation.com.au/' }, { name: title, url }]));
+
+const stripTags = (s: string) => s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+const firstText = blocks.map((b) => b.props.subheading || b.props.subtitle || (b.props.body && stripTags(b.props.body))).find(Boolean);
+const description = seoDescription || (firstText ? String(firstText).slice(0, 155) : '');
+---
+<Base title={seoTitle || title} description={description} schema={schema} noindex={noindex}>
+  <PageRender data={data} metadata={metadata} />
+</Base>
