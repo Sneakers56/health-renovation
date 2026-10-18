@@ -2077,3 +2077,9 @@ main:has(> section.about-cta:last-of-type) + .site-footer .footer-cta-strip { di
   .booking-cta a[href^="sms:"] { display: none; }
   .booking-cta .cta-actions:not(:has(a:not([href^="tel:"]):not([href^="sms:"]))) { display: none; }
 }
+
+/* Phones: the dropdown is always shown in the slide-out menu, so it must accept taps
+   (the desktop rule hides it with pointer-events: none until hover) */
+@media (max-width: 768px) {
+  .nav-menu .sub-menu { pointer-events: auto; }
+}
