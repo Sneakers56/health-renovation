@@ -2065,3 +2065,15 @@ main:has(> section.about-cta:last-of-type) + .site-footer .footer-cta-strip { di
 
   .breadcrumb-nav { font-size: 0.8125rem; }
 }
+
+/* Phones: the sticky Call / Book bar replaces the phone buttons and contact details at the bottom of pages */
+@media (max-width: 768px) {
+  .footer-cta-strip,
+  .footer-contact,
+  .about-cta,
+  .service-info-card,
+  .cta-note,
+  .booking-cta a[href^="tel:"],
+  .booking-cta a[href^="sms:"] { display: none; }
+  .booking-cta .cta-actions:not(:has(a:not([href^="tel:"]):not([href^="sms:"]))) { display: none; }
+}
