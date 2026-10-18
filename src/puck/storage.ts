@@ -50,7 +50,12 @@ async function local(action: string, params: Record<string, any>) {
 
 export async function localAvailable(): Promise<boolean> {
   try {
-    const res = await fetch(LOCAL_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'info' }) });
+    const res = await fetch(LOCAL_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'info' }),
+      signal: AbortSignal.timeout(3000),
+    });
     return res.ok;
   } catch {
     return false;

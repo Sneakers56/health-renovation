@@ -59,8 +59,8 @@ export default function Editor() {
   // Pick where to save: local files when developing, GitHub on the live site
   useEffect(() => {
     (async () => {
-      if (await localAvailable()) return setStorage(localStorageBackend);
       if (['localhost', '127.0.0.1'].includes(location.hostname)) {
+        if (await localAvailable()) return setStorage(localStorageBackend);
         return setStatus({ kind: 'error', text: 'Start the local save server with `npm run cms`, then reload.' });
       }
       try {
