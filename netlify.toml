@@ -21,3 +21,9 @@
   from = "/home/"
   to = "/"
   status = 301
+
+# The old Decap CMS editor lived at /admin – send people to the visual editor
+[[redirects]]
+  from = "/admin/*"
+  to = "/editor/"
+  status = 301

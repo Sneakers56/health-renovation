@@ -3,7 +3,7 @@ html, body { margin: 0; height: 100%; }
 body { font-family: Inter, system-ui, sans-serif; }
 
 .hr-editor { height: 100vh; display: flex; flex-direction: column; }
-.hr-editor > :last-child { flex: 1; min-height: 0; }
+.hr-editor > .hr-editor-canvas { flex: 1; min-height: 0; }
 
 .hr-editor-status {
   display: flex; align-items: center; justify-content: center; gap: 1rem;
@@ -45,3 +45,20 @@ body { font-family: Inter, system-ui, sans-serif; }
 .hr-imgfield-grid button.is-selected { border-color: #1f6b92; }
 .hr-imgfield-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hr-imgfield-error { color: #b00020; font-size: 12px; margin: 0; }
+
+/* Tabs bar */
+.hr-editor-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  padding: 8px 12px; background: #1a3a52; color: #fff;
+}
+.hr-editor-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+.hr-editor-tabs button {
+  font: 500 13px/1 Inter, system-ui, sans-serif; color: rgba(255,255,255,0.8);
+  background: transparent; border: 0; border-radius: 6px; padding: 9px 12px; cursor: pointer;
+}
+.hr-editor-tabs button:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.hr-editor-tabs button.is-active { background: #fff; color: #1a3a52; }
+.hr-editor-doc { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.hr-editor-canvas { flex: 1; min-height: 0; }
+.hr-editor > .hr-editor-canvas { display: flex; flex-direction: column; }
+.hr-editor > .hr-editor-canvas > * { flex: 1; min-height: 0; }

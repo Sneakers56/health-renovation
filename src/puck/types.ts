@@ -14,6 +14,7 @@ export type SiteMeta = {
   posts: { slug: string; title: string; description: string; date: string; draft?: boolean; image?: string }[];
   testimonials: { quote: string; name: string; detail?: string }[];
   images: Record<string, ResolvedImage>;
+  current?: string;
 };
 
 export type Button = { label?: string; link?: string };

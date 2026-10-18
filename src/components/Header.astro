@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
+import { getServices } from '../lib/content';
 import Icon from './Icon.astro';
 import Btn from './Btn.astro';
 import logo from '../assets/images/logo.png';
@@ -10,14 +10,14 @@ import nav from '../data/navigation.json';
 type Link = { label: string; link: string };
 type Item = Link & { servicesDropdown?: boolean; children?: Link[] };
 
-const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const services = await getServices();
 const path = Astro.url.pathname;
 const tel = site.phone.replace(/\s/g, '');
 const isCurrent = (href: string) => (href === '/' ? path === '/' : href.startsWith('/') && path.startsWith(href));
 
 const items = (nav.items as Item[]).map((item) => {
   const children: Link[] = [
-    ...(item.servicesDropdown ? services.map((s) => ({ label: s.data.title, link: `/services/${s.id}/` })) : []),
+    ...(item.servicesDropdown ? services.map((s) => ({ label: s.title, link: `/services/${s.id}/` })) : []),
     ...(item.children ?? []),
   ];
   return { ...item, children };

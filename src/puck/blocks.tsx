@@ -5,11 +5,11 @@ import type { Button, SiteMeta } from './types';
 
 /* ── Helpers ─────────────────────────────────────────────────────────────── */
 
-const meta = (puck: any) => (puck?.metadata ?? {}) as SiteMeta;
-const telOf = (phone = '') => phone.replace(/\s/g, '');
+export const meta = (puck: any) => (puck?.metadata ?? {}) as SiteMeta;
+export const telOf = (phone = '') => phone.replace(/\s/g, '');
 const yesNo = [{ label: 'Yes', value: true }, { label: 'No', value: false }];
 
-function Img(props: { name?: string; alt?: string; className?: string; sizes?: string; priority?: boolean; puck: any }) {
+export function Img(props: { name?: string; alt?: string; className?: string; sizes?: string; priority?: boolean; puck: any }) {
   const { name, alt, className, sizes, priority, puck } = props;
   if (!name) return null;
   const r = meta(puck).images?.[name];
@@ -30,7 +30,7 @@ function Img(props: { name?: string; alt?: string; className?: string; sizes?: s
   );
 }
 
-function Btn({ b, className, icon }: { b?: Button; className: string; icon?: string }) {
+export function Btn({ b, className, icon }: { b?: Button; className: string; icon?: string }) {
   if (!b?.label || !b?.link) return null;
   const external = b.link.startsWith('http');
   return (
@@ -42,7 +42,7 @@ function Btn({ b, className, icon }: { b?: Button; className: string; icon?: str
   );
 }
 
-function Rich({ value, className }: { value?: ReactNode; className?: string }) {
+export function Rich({ value, className }: { value?: ReactNode; className?: string }) {
   if (!value) return null;
   if (typeof value === 'string') return <div className={className} dangerouslySetInnerHTML={{ __html: value }} />;
   return <div className={className}>{value}</div>;
@@ -781,7 +781,7 @@ const Testimonials = {
   render: ({ eyebrow, heading, limit, puck }: any) => {
     const all = meta(puck).testimonials ?? [];
     const items = limit ? all.slice(0, limit) : all;
-    if (!items.length) return puck?.isEditing ? <div className="hr-placeholder hr-placeholder--section">No testimonials yet – add them in /admin under Settings → Testimonials. This section stays hidden on the site until there is at least one.</div> : null;
+    if (!items.length) return puck?.isEditing ? <div className="hr-placeholder hr-placeholder--section">No testimonials yet – add them in the Testimonials tab. This section stays hidden on the site until there is at least one.</div> : null;
     return (
       <section className="testimonials-section section-pad bg-light">
         <div className="container">
@@ -809,7 +809,7 @@ const LatestPosts = {
   defaultProps: { eyebrow: 'From the Blog', heading: 'Latest Articles', count: 3 },
   render: ({ eyebrow, heading, count, puck }: any) => {
     const posts = (meta(puck).posts ?? []).slice(0, count || 3);
-    if (!posts.length) return puck?.isEditing ? <div className="hr-placeholder hr-placeholder--section">No published articles yet – write one in /admin under Blog. This section stays hidden on the site until then.</div> : null;
+    if (!posts.length) return puck?.isEditing ? <div className="hr-placeholder hr-placeholder--section">No published articles yet – write one in the Blog tab. This section stays hidden on the site until then.</div> : null;
     return (
       <section className="posts-section section-pad">
         <div className="container">

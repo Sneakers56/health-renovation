@@ -1,11 +1,13 @@
 ---
-import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
+import PageRender from '../../puck/PageRender';
 import { breadcrumbSchema } from '../../lib/schema';
+import { getServices } from '../../lib/content';
+import { buildSiteMeta } from '../../lib/siteMeta';
 
-const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
-const rendered = await Promise.all(services.map(async (s) => ({ s, Content: (await render(s)).Content })));
+const services = await getServices();
+const metadata = await buildSiteMeta({ pageData: services.map((s) => s.doc.content) });
 const schema = [
   breadcrumbSchema([
     { name: 'Home', url: 'https://healthrenovation.com.au/' },
@@ -30,17 +32,17 @@ const schema = [
 
   <section class="services-detail section-pad">
     <div class="container">
-      {rendered.map(({ s, Content }, i) => (
+      {services.map((s, i) => (
         <>
           <div class={`service-detail-item ${i % 2 ? 'reverse' : ''}`} id={s.id}>
             <div class="service-detail-icon-col">
-              <div class={`service-detail-icon-wrap service-icon-${s.data.color}`}>
-                <Icon name={s.data.icon} size={48} />
+              <div class={`service-detail-icon-wrap service-icon-${s.color}`}>
+                <Icon name={s.icon} size={48} />
               </div>
               <div class="service-meta-card">
                 <div class="service-meta-item">
                   <span class="meta-label">Session Length</span>
-                  <span class="meta-value">{s.data.duration}</span>
+                  <span class="meta-value">{s.duration}</span>
                 </div>
                 <div class="service-meta-item">
                   <span class="meta-label">Format</span>
@@ -50,18 +52,18 @@ const schema = [
               </div>
             </div>
             <div class="service-detail-content">
-              <h2 class="service-detail-title"><a href={`/services/${s.id}/`}>{s.data.title}</a></h2>
-              <p class="service-detail-tagline">{s.data.tagline}</p>
-              <div class="service-detail-body"><Content /></div>
+              <h2 class="service-detail-title"><a href={`/services/${s.id}/`}>{s.title}</a></h2>
+              <p class="service-detail-tagline">{s.tagline}</p>
+              <div class="service-detail-body"><PageRender data={{ root: { props: { title: s.title } }, content: s.doc.content }} metadata={metadata} /></div>
               <div class="service-benefits">
                 <h3 class="benefits-title">Key Benefits</h3>
                 <ul class="benefits-list">
-                  {s.data.benefits.map((b) => <li><Icon name="check" size={16} /> {b}</li>)}
+                  {s.benefits.map((b) => <li><Icon name="check" size={16} /> {b.text}</li>)}
                 </ul>
               </div>
             </div>
           </div>
-          {i < rendered.length - 1 && <hr class="service-divider" />}
+          {i < services.length - 1 && <hr class="service-divider" />}
         </>
       ))}
     </div>

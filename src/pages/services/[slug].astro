@@ -1,95 +1,33 @@
 ---
-import { Image } from 'astro:assets';
-import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Icon from '../../components/Icon.astro';
+import PageRender from '../../puck/PageRender';
 import site from '../../data/site.json';
+import { getServices } from '../../lib/content';
+import { buildSiteMeta } from '../../lib/siteMeta';
 import { serviceSchema, breadcrumbSchema } from '../../lib/schema';
 
 export async function getStaticPaths() {
-  const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
-  return services.map((service, i) => ({
-    params: { slug: service.id },
-    props: {
-      service,
-      prev: services[i - 1] ?? null,
-      next: services[i + 1] ?? null,
-    },
-  }));
+  const services = await getServices();
+  return services.map((service) => ({ params: { slug: service.id }, props: { service } }));
 }
 
-const { service, prev, next } = Astro.props;
-const { Content } = await render(service);
-const { data } = service;
-const tel = site.phone.replace(/\s/g, '');
+const { service } = Astro.props;
+const metadata = await buildSiteMeta({ pageData: service.doc, current: service.id });
 const url = `https://healthrenovation.com.au/services/${service.id}/`;
 const schema = [
-  serviceSchema(`${data.title} in ${site.suburb}`, data.tagline, url),
+  serviceSchema(`${service.title} in ${site.suburb}`, service.tagline, url),
   breadcrumbSchema([
     { name: 'Home', url: 'https://healthrenovation.com.au/' },
     { name: 'Services', url: 'https://healthrenovation.com.au/services/' },
-    { name: data.title, url },
+    { name: service.title, url },
   ]),
 ];
 ---
 <Base
-  title={data.seo?.title || `${data.title} in ${site.suburb}`}
-  description={data.seo?.description || `${data.title} in ${site.suburb}, Victoria with Mark. ${data.tagline} Sessions ${data.duration}. Call ${site.phone}.`}
-  noindex={data.seo?.noindex}
+  title={service.seoTitle || `${service.title} in ${site.suburb}`}
+  description={service.seoDescription || `${service.title} in ${site.suburb}, Victoria with ${site.practitioner}. ${service.tagline} Sessions ${service.duration}. Call ${site.phone}.`}
+  noindex={service.noindex}
   schema={schema}
 >
-  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-    <div class="container">
-      <ol class="breadcrumb-list">
-        <li><a href="/">Home</a></li>
-        <li><a href="/services/">Services</a></li>
-        <li aria-current="page">{data.title}</li>
-      </ol>
-    </div>
-  </nav>
-
-  <article>
-    <section class={`service-hero service-hero--${service.id}`}>
-      <div class="container">
-        <div class="service-hero-content">
-          <h1 class="service-hero-title">{data.title} in {site.suburb}</h1>
-          <p class="service-hero-subtitle">{data.tagline}</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="container service-container section-pad">
-      <div class="service-grid">
-        <div class="service-main-content">
-          <Content />
-          <h2>Key Benefits</h2>
-          <ul>
-            {data.benefits.map((b) => <li>{b}</li>)}
-          </ul>
-          <p><strong>Session length:</strong> {data.duration}. Available in-clinic in {site.suburb} or as a mobile in-home session.</p>
-        </div>
-
-        <aside class="service-sidebar">
-          <div class="service-featured-card">
-            <Image src={data.image} alt={`${data.title} session at ${site.name}`} widths={[400, 800]} sizes="(max-width: 960px) 100vw, 400px" class="service-feature-image" loading="eager" fetchpriority="high" />
-          </div>
-          <div class="service-info-card">
-            <h2 class="info-card-title">Ready to begin?</h2>
-            <p class="info-card-text">Book a free discovery call to find out how {data.title.toLowerCase()} can support you.</p>
-            <div class="cta-actions sidebar-cta">
-              <a class="btn btn-primary btn-lg" href={`tel:${tel}`}><Icon name="phone" size={18} /> Call Now</a>
-              <a class="btn btn-outline btn-lg" href={`sms:${tel}`}>Text Me</a>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
-
-    <nav class="post-navigation" aria-label="More services">
-      <div class="container nav-links">
-        {prev ? <a class="nav-previous" href={`/services/${prev.id}/`}>← {prev.data.title}</a> : <span />}
-        {next ? <a class="nav-next" href={`/services/${next.id}/`}>{next.data.title} →</a> : <span />}
-      </div>
-    </nav>
-  </article>
+  <PageRender kind="service" data={service.doc} metadata={metadata} />
 </Base>

@@ -1,0 +1,47 @@
+{
+  "root": {
+    "props": {
+      "title": "Life Coaching",
+      "order": 5,
+      "tagline": "A supportive path to clarity, confidence, and meaningful action.",
+      "excerpt": "A supportive and powerful path to clarity, confidence, and meaningful action. Move beyond blocks and reconnect with your purpose.",
+      "duration": "1 hour",
+      "image": "life-coaching.jpg",
+      "imageAlt": "Life Coaching session",
+      "color": "purple",
+      "icon": "life-coaching",
+      "benefits": [
+        {
+          "text": "Gain clarity and direction"
+        },
+        {
+          "text": "Build confidence"
+        },
+        {
+          "text": "Break through limiting beliefs"
+        },
+        {
+          "text": "Create actionable plans"
+        },
+        {
+          "text": "Improve relationships"
+        }
+      ],
+      "seoTitle": "",
+      "seoDescription": "",
+      "noindex": false
+    }
+  },
+  "content": [
+    {
+      "type": "RichText",
+      "props": {
+        "id": "RichText-7e2786de-0cbf-4e30-b390-b4a001a3f9f3",
+        "content": "<p>Life coaching with Mark offers a structured, supportive space to explore what you truly want from life – and to build the clarity, confidence, and practical strategies to move towards it.</p><p>Unlike therapy, life coaching is forward-focused. It's not about analysing the past, but about understanding where you are now, identifying where you want to be, and creating a clear roadmap to get there. Mark brings his deep understanding of psychology, energy, and human behaviour to every coaching session.</p><p>Whether you're at a crossroads in life, feeling stuck in old patterns, or simply want more from your relationships, work, or health – coaching can be the catalyst for real, lasting change.</p>",
+        "align": "left",
+        "size": "normal",
+        "hidden": false
+      }
+    }
+  ]
+}

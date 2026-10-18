@@ -1,0 +1,47 @@
+{
+  "root": {
+    "props": {
+      "title": "MRT-Detox",
+      "order": 4,
+      "tagline": "Matrix Regeneration Therapy to promote lymphatic detox and wellbeing.",
+      "excerpt": "Matrix Regeneration Therapy (MRT) promotes lymphatic detox, reduces cellulite and supports weight loss – similar to cupping but deeper.",
+      "duration": "30–45 min",
+      "image": "mrt-detox.jpg",
+      "imageAlt": "MRT-Detox session",
+      "color": "blue",
+      "icon": "mrt-detox",
+      "benefits": [
+        {
+          "text": "Promotes lymphatic drainage"
+        },
+        {
+          "text": "Reduces cellulite"
+        },
+        {
+          "text": "Supports weight loss"
+        },
+        {
+          "text": "Relieves chronic pain"
+        },
+        {
+          "text": "Detoxifies the body"
+        }
+      ],
+      "seoTitle": "",
+      "seoDescription": "",
+      "noindex": false
+    }
+  },
+  "content": [
+    {
+      "type": "RichText",
+      "props": {
+        "id": "RichText-34306808-04d6-40cf-bfa5-60e0478f98e5",
+        "content": "<p>Matrix Regeneration Therapy (MRT) is an advanced form of manual therapy similar to cupping, but more precise and effective. It uses specialised suction tools to work deeply into the connective tissue (the \"matrix\") that surrounds all organs, muscles, and cells.</p><p>MRT stimulates the lymphatic system, promotes detoxification, breaks down fascial adhesions, reduces cellulite, and supports weight management. It can also be highly effective for chronic pain, poor circulation, and immune system support.</p><p>Sessions leave you feeling lighter, cleaner, and more energised. Multiple sessions are often recommended for best results.</p>",
+        "align": "left",
+        "size": "normal",
+        "hidden": false
+      }
+    }
+  ]
+}

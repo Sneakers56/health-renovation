@@ -1,12 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
+import { getServices } from '../lib/content';
 import Icon from './Icon.astro';
 import logo from '../assets/images/logo.png';
 import site from '../data/site.json';
 import nav from '../data/navigation.json';
 
-const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const services = await getServices();
 const tel = site.phone.replace(/\s/g, '');
 const social = site.social as { network: string; url: string }[];
 ---
@@ -53,7 +53,7 @@ const social = site.social as { network: string; url: string }[];
         <div class="footer-col footer-services">
           <h2 class="footer-col-title">Services</h2>
           <ul>
-            {services.map((s) => <li><a href={`/services/${s.id}/`}>{s.data.title}</a></li>)}
+            {services.map((s) => <li><a href={`/services/${s.id}/`}>{s.title}</a></li>)}
           </ul>
         </div>
 

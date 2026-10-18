@@ -1,0 +1,24 @@
+{
+  "root": {
+    "props": {
+      "title": "Example article – replace me",
+      "description": "This is an example draft to show the format. Drafts are visible when running the site locally but never published.",
+      "date": "2026-10-18",
+      "image": "",
+      "imageAlt": "",
+      "draft": true
+    }
+  },
+  "content": [
+    {
+      "type": "RichText",
+      "props": {
+        "id": "RichText-1a0578fb-ede0-4216-b9bc-b170a6f5a115",
+        "content": "<p>Write the article here. You can use <strong>bold</strong>, <em>italics</em>, lists and headings.</p><h2>A subheading</h2><ul><li><p>A point</p></li><li><p>Another point</p></li></ul><p>Delete this post, or untick \"Draft\" once it's ready to publish.</p>",
+        "align": "left",
+        "size": "normal",
+        "hidden": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "root": {
+    "props": {
+      "title": "Kinesiology",
+      "order": 1,
+      "tagline": "Restore energetic balance and reduce stress using muscle-based feedback.",
+      "excerpt": "Restore energetic balance and reduce stress using muscle-based feedback. A deeply transformative therapy that works with the body's intelligence.",
+      "duration": "1–1.5 hours",
+      "image": "kinesiology.jpg",
+      "imageAlt": "Kinesiology session",
+      "color": "green",
+      "icon": "kinesiology",
+      "benefits": [
+        {
+          "text": "Reduces stress and anxiety"
+        },
+        {
+          "text": "Addresses chronic pain"
+        },
+        {
+          "text": "Supports emotional healing"
+        },
+        {
+          "text": "Improves energy and vitality"
+        },
+        {
+          "text": "Enhances clarity and focus"
+        }
+      ],
+      "seoTitle": "",
+      "seoDescription": "",
+      "noindex": false
+    }
+  },
+  "content": [
+    {
+      "type": "RichText",
+      "props": {
+        "id": "RichText-a187f940-cd3c-40e2-b59f-843b4cbceed6",
+        "content": "<p>Kinesiology is a powerful, non-invasive therapy that uses muscle testing (applied kinesiology) to identify imbalances in the body's energy systems. By gently applying resistance to specific muscles, Mark can access information about which physical, emotional, or nutritional stressors are affecting your wellbeing.</p><p>This information guides the selection of targeted corrections – including acupressure, nutritional support, emotional stress release techniques, and more. Kinesiology is highly effective for stress, anxiety, pain, digestive issues, learning difficulties, and chronic fatigue.</p><p>Sessions are fully clothed and require you to be comfortable lying on a treatment table.</p>",
+        "align": "left",
+        "size": "normal",
+        "hidden": false
+      }
+    }
+  ]
+}

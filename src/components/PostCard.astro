@@ -1,19 +1,20 @@
 ---
 import { Image } from 'astro:assets';
-import { formatDate } from '../lib/posts';
+import { formatDate, type Post } from '../lib/content';
+import { imageFiles } from '../lib/siteMeta';
 
-const { post } = Astro.props;
-const { title, description, date, image, imageAlt, draft } = post.data;
+const { post } = Astro.props as { post: Post };
+const img = post.image ? imageFiles[post.image] : undefined;
 ---
 <article class="post-card">
-  {image && (
+  {img && (
     <a class="post-card-thumbnail" href={`/blog/${post.id}/`} tabindex="-1" aria-hidden="true">
-      <Image src={image} alt={imageAlt ?? ''} widths={[400, 800]} sizes="(max-width: 960px) 100vw, 33vw" />
+      <Image src={img} alt={post.imageAlt ?? ''} widths={[400, 800]} sizes="(max-width: 960px) 100vw, 33vw" />
     </a>
   )}
   <div class="post-card-body">
-    <p class="post-card-meta"><time datetime={date.toISOString()}>{formatDate(date)}</time>{draft && ' · Draft'}</p>
-    <h3 class="post-card-title"><a href={`/blog/${post.id}/`}>{title}</a></h3>
-    <p class="post-card-excerpt">{description}</p>
+    <p class="post-card-meta"><time datetime={post.date.toISOString()}>{formatDate(post.date)}</time>{post.draft && ' · Draft'}</p>
+    <h3 class="post-card-title"><a href={`/blog/${post.id}/`}>{post.title}</a></h3>
+    <p class="post-card-excerpt">{post.description}</p>
   </div>
 </article>
