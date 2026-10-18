@@ -3,6 +3,8 @@ import '../styles/main.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import site from '../data/site.json';
+import nav from '../data/navigation.json';
+import Icon from '../components/Icon.astro';
 
 interface Props {
   title: string;
@@ -19,6 +21,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(image, Astro.site).href;
 const gaId = /^G-[A-Z0-9]+$/.test(site.googleAnalyticsId) ? site.googleAnalyticsId : '';
 const { announcement } = site;
+const tel = site.phone.replace(/\s/g, '');
 ---
 <!doctype html>
 <html lang="en-AU">
@@ -73,6 +76,10 @@ const { announcement } = site;
     <slot />
   </main>
   <Footer />
+  <nav class="mobile-action-bar" aria-label="Quick contact">
+    <a class="mab-call" href={`tel:${tel}`}><Icon name="phone" size={18} /> Call {site.practitioner}</a>
+    <a class="mab-book" href={nav.button?.link || "/contact/"}>{nav.button?.label || "Book a Session"}</a>
+  </nav>
   <script src="../scripts/main.ts"></script>
 </body>
 </html>
