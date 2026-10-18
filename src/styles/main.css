@@ -2081,5 +2081,11 @@ main:has(> section.about-cta:last-of-type) + .site-footer .footer-cta-strip { di
 /* Phones: the dropdown is always shown in the slide-out menu, so it must accept taps
    (the desktop rule hides it with pointer-events: none until hover) */
 @media (max-width: 768px) {
-  .nav-menu .sub-menu { pointer-events: auto; }
+  .nav-menu .sub-menu,
+  .nav-menu li:hover > .sub-menu,
+  .nav-menu li:focus-within > .sub-menu {
+    pointer-events: auto;
+    transform: none;
+    transition: none;
+  }
 }
